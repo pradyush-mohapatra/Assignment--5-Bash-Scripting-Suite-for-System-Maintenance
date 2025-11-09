@@ -29,6 +29,9 @@ Day-wise Tasks (Exactly as in Assignment Table)
 How to Run
 
  ```bash
+cp -r BashMaintenanceSuite ~/
 cd ~/BashMaintenanceSuite
 chmod +x main.sh scripts/*.sh
+dos2unix main.sh scripts/*.sh
 ./main.sh
+
