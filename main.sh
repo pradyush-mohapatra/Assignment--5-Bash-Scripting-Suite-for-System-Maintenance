@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==========================================
 # Script Name : main.sh
-# Author      : <Pradyush Mohapatra> (<2241013332>)
+# Author      : <Your Name> (<Your Roll No>)
 # Description : Interactive menu for maintenance suite
 # ==========================================
 
@@ -10,21 +10,24 @@ set -euo pipefail
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_DIR="$BASE_DIR/scripts"
 LOG_DIR="$BASE_DIR/logs"
-
 mkdir -p "$LOG_DIR"
 
 while true; do
   clear
-  echo "=============================="
+  echo "======================================================"
+  echo "  System Maintenance Dashboard - Pradyush Mohapatra" 
+  echo "======================================================"
   echo " SYSTEM MAINTENANCE MENU"
   echo "=============================="
   echo "1. Backup Files"
   echo "2. System Update and Cleanup"
   echo "3. Log Monitoring"
-  echo "4. Run All Tasks"
-  echo "5. Exit"
+  echo "4. Disk Storage Information"
+  echo "5. System Information"
+  echo "6. Run All Tasks"
+  echo "7. Exit"
   echo "=============================="
-  read -rp "Enter your choice [1-5]: " choice
+  read -rp "Enter your choice [1-7]: " choice
 
   case "$choice" in
     1)
@@ -40,13 +43,23 @@ while true; do
       read -rp "Press Enter to continue..."
       ;;
     4)
-      bash "$SCRIPTS_DIR/backup.sh"
-      bash "$SCRIPTS_DIR/update-clean.sh"
-      bash "$SCRIPTS_DIR/logwatch.sh"
-      echo "✅ All maintenance tasks completed!"
+      bash "$SCRIPTS_DIR/diskinfo.sh"
       read -rp "Press Enter to continue..."
       ;;
     5)
+      bash "$SCRIPTS_DIR/sysinfo.sh"
+      read -rp "Press Enter to continue..."
+      ;;
+    6)
+      bash "$SCRIPTS_DIR/backup.sh"
+      bash "$SCRIPTS_DIR/update-clean.sh"
+      bash "$SCRIPTS_DIR/logwatch.sh"
+      bash "$SCRIPTS_DIR/diskinfo.sh"
+      bash "$SCRIPTS_DIR/sysinfo.sh"
+      echo "✅ All maintenance tasks completed!"
+      read -rp "Press Enter to continue..."
+      ;;
+    7)
       echo "Exiting... Goodbye!"
       exit 0
       ;;
